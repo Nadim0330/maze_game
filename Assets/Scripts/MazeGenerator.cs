@@ -30,6 +30,8 @@ public class MazeGenerator : MonoBehaviour
     // Declare CurrentTile here as a class member
     private Vector2 CurrentTile;
 
+    public GameObject keyPrefab; // Assign in Inspector
+    private GameObject keyInstance;
 
     // public RawImage minimapRawImage;
 
@@ -65,7 +67,42 @@ public class MazeGenerator : MonoBehaviour
             Debug.LogError("EnemyAI reference is not assigned!");
         }
         SpawnEnemies();
+        PlaceKey();
+
     }
+    private void PlaceKey()
+    {
+        if (keyPrefab == null) return;
+
+        List<Vector2> validPositions = new List<Vector2>();
+        Vector2 exitPos = exit;
+
+        // Find floor tiles not close to the exit
+        for (int x = 1; x < width - 1; x++)
+        {
+            for (int y = 1; y < height - 1; y++)
+            {
+                if (Maze[x, y] == 0)
+                {
+                    Vector2 pos = new Vector2(x, y);
+                    float dist = Vector2.Distance(pos, exitPos);
+                    if (dist > 5f) // Ensure it's not too close to exit
+                    {
+                        validPositions.Add(pos);
+                    }
+                }
+            }
+        }
+
+        if (validPositions.Count > 0)
+        {
+            Vector2 randomPos = validPositions[rnd.Next(validPositions.Count)];
+            Vector3 worldPos = floorTilemap.CellToWorld(new Vector3Int((int)randomPos.x, (int)randomPos.y, 0)) + new Vector3(0.5f, 0.5f, 0);
+            keyInstance = Instantiate(keyPrefab, worldPos, Quaternion.identity);
+        }
+    }
+
+
     private void SpawnEnemies()
     {
         if (spawnEnemy == null || playerStats == null) return;

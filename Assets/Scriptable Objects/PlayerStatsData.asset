@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PlayerStatsData
   m_EditorClassIdentifier: 
   baseHealth: 100
-  maxHealth: 300
-  currentHealth: 215
+  maxHealth: 350
+  currentHealth: 345
+  hasKey: 0
   level: 1
   currentXP: 0
   maxXP: 100

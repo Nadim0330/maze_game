@@ -684,6 +684,7 @@ MonoBehaviour:
   spawnEnemy: {fileID: 3583241983988172852, guid: 189d28732f025ae48b9d90d5477d0a80, type: 3}
   maxEnemies: 3
   playerStats: {fileID: 11400000, guid: a50dcf229155932448e9503c96e9086d, type: 2}
+  keyPrefab: {fileID: 5942836361084880830, guid: e6477711b9c974b458111e200f04eb76, type: 3}
 --- !u!4 &483159585
 Transform:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class PlayerStats : ScriptableObject
     public float baseHealth = 100f;
     public float maxHealth = 100f;
     public float currentHealth = 100f;
-
+    public bool hasKey = false;
 
     public int level = 1;
     public float currentXP = 0f;

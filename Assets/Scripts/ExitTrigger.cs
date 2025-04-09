@@ -10,9 +10,17 @@ public class ExitTrigger : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("You Win!!!");
-            playerStats.LevelUp();
-            SceneManager.LoadScene("WinScene");
+            if (playerStats != null && playerStats.hasKey)
+            {
+                Debug.Log("You Win!!!");
+                playerStats.LevelUp();
+                SceneManager.LoadScene("WinScene");
+            }
+            else
+            {
+                Debug.Log("Find the key first!");
+            }
         }
     }
+
 }
