@@ -70,10 +70,4 @@ public class HUDManager : MonoBehaviour
         stats.AddXP(xp);  // Handles level-up internally
         UpdateXPUI();
     }
-
-    bool AreAllEnemiesDefeated()
-    {
-        return GameObject.FindGameObjectsWithTag("spawnEnemy").Length == 0;
-    }
-
 }
